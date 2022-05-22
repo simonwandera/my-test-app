@@ -1,5 +1,5 @@
 import { useMemo, useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import User from './components/User';
 import { userContext } from './components/userContext';
 import Home from './components/Home';
@@ -91,7 +91,7 @@ function App() {
   clientData && (clientData.device=device)
   clientData && blockAuth && (clientData.allow_auth= blockAuth)
 
-  console.log(clientData)
+  // console.log(clientData)
 
 
   return (
