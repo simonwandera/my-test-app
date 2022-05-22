@@ -2,6 +2,11 @@
   "homepage": "https://simonwandera.github.io/my-test-app",
   "name": "my-test-app",
   "version": "0.1.0",
+  "proxy":{
+    "/api":{
+      "target":"https://traffic.pythonanywhere.com/"
+    }
+  },
   "dependencies": {
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
@@ -46,6 +51,5 @@
   },
   "devDependencies": {
     "gh-pages": "^4.0.0"
-  },
-  "proxy":"http://traffic.pythonanywhere.com/"
+  }
 }
