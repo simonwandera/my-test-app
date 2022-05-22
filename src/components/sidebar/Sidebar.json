@@ -1,0 +1,56 @@
+[
+    {
+        "title": "General",
+        "icon": "bi-gear-fill",
+        "childrens": [
+            {
+                "title": "Control Panel",
+                "icon": "bi-house-fill",
+                "path": "panel"
+            },
+            {
+                "title": "Users",
+                "icon": "bi-person-circle",
+                "path": "/users"
+            }
+        ]
+    },
+    {
+        "title": "Traffic",
+        "icon": "bi-activity",
+        "childrens": [
+            {
+                "title": "All",
+                "path": "requests"
+            },
+            
+            {
+                "title": "Unauthorised",
+                "path": "unauthorised"
+            }
+        ]
+    },
+    {
+        "title": "Blocked",
+        "icon": "bi-person-fill",
+        "childrens": [
+            {
+                "title": "Blocked Country",
+                "path": "blocked_country"
+            },
+            {
+                "title": "Blocked Ip",
+                "path": "blocked_ip"
+            },
+            {
+                "title": "Blocked Users",
+                "path": "blocked_user"
+            }
+        ]
+    },
+    {
+        "title": "Home",
+        "icon": "bi-house-heart",
+        "path": "/"
+    }
+]
