@@ -23,7 +23,7 @@ function App() {
   const [blockAuth, setBlockAuth] = useState(false)
 
   useEffect(() => {
-    fetch('api/auth/allow_authenticated', {
+    fetch('https://traffic.pythonanywhere.com/api/auth/allow_authenticated', {
       method: 'GET',
 
     }).then(responce => {
@@ -63,7 +63,7 @@ function App() {
   }, [])
   
   useEffect(() => {
-    fetch('api/auth/profile', {
+    fetch('https://traffic.pythonanywhere.com/api/auth/profile', {
       method: 'GET',
       body: JSON.stringify(),
       headers: {

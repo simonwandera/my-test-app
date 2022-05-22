@@ -9,7 +9,7 @@ const useFetch = (url) =>{
     useEffect(() => {
         const abortCont = new AbortController();
         setTimeout(() => {
-        fetch(url, {
+        fetch('https://traffic.pythonanywhere.com/' + url, {
             method: 'GET'
         })
             .then(response => {

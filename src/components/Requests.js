@@ -44,7 +44,7 @@ const Requests = ({ dat }) => {
   const getreq = () =>{
     const abortCont = new AbortController();
     setTimeout(() => {
-      fetch('/api/auth/network', {
+      fetch('https://traffic.pythonanywhere.com/api/auth/network', {
         method: 'GET',
         body: JSON.stringify(),
 
@@ -112,7 +112,7 @@ const Requests = ({ dat }) => {
               icon: 'delete',
               tooltip: 'Block IP',
               onClick: (event, rowData) => {
-                fetch('/api/product/block_ip', {
+                fetch('https://traffic.pythonanywhere.com/api/product/block_ip', {
                   method: 'POST',
                   body: JSON.stringify(rowData.ipv4),
           
@@ -136,7 +136,7 @@ const Requests = ({ dat }) => {
               icon: 'clear',
               tooltip: 'Block Country',
               onClick: (event, rowData) => {
-                fetch('/api/product/block_country', {
+                fetch('https://traffic.pythonanywhere.com/api/product/block_country', {
                   method: 'POST',
                   body: JSON.stringify(rowData.location),
           

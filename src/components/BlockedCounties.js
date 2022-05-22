@@ -21,7 +21,7 @@ const BlockedCounties = ({dat}) => {
     useEffect(() => {
       const abortCont = new AbortController();
       setTimeout(() => {
-        fetch('/api/product/blocked_country', {
+        fetch('https://traffic.pythonanywhere.com/api/product/blocked_country', {
           method: 'POST',
           body: JSON.stringify(thisuser),
   

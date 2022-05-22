@@ -14,7 +14,7 @@ const Home = ({ dat }) => {
 
   useEffect(() => {
     if (username) {
-      fetch('api/product/check_request', {
+      fetch('https://traffic.pythonanywhere.com/api/product/check_request', {
         method: 'POST',
         body: JSON.stringify({ device, ip, country, username }),
         headers: {

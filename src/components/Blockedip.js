@@ -23,7 +23,7 @@ const Blockedip = ({ dat }) => {
   useEffect(() => {
     const abortCont = new AbortController();
     setTimeout(() => {
-      fetch('/api/product/blocked_ip', {
+      fetch('https://traffic.pythonanywhere.com/api/product/blocked_ip', {
         method: 'POST',
         body: JSON.stringify(thisuser),
 

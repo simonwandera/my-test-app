@@ -21,7 +21,7 @@ const BlockedUser = ({ dat }) => {
   useEffect(() => {
     const abortCont = new AbortController();
     setTimeout(() => {
-      fetch('/api/product/blocked_user', {
+      fetch('https://traffic.pythonanywhere.com/api/product/blocked_user', {
         method: 'POST',
         body: JSON.stringify(thisuser),
 

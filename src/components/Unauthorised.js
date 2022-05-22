@@ -8,7 +8,7 @@ const Unauthorised = ({ dat }) => {
     const [error, setError] = useState(null)
 
     useEffect(() => {
-        fetch('/api/auth/unauthorised', {
+        fetch('https://traffic.pythonanywhere.com/api/auth/unauthorised', {
             method: 'GET',
 
         }).then(responce => {

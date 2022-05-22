@@ -5,7 +5,7 @@ const Panel = ({dat}) => {
     const [speed, setSpeed] = useState()
 
     useEffect(() => {
-        fetch('api/auth/speed', {
+        fetch('https://traffic.pythonanywhere.com/api/auth/speed', {
           method: 'GET',
     
         }).then(responce => {
@@ -23,7 +23,7 @@ const Panel = ({dat}) => {
       }, [])
 
      const blockAuth =()=>{
-        fetch('api/auth/block_unauthorised', {
+        fetch('https://traffic.pythonanywhere.com/api/auth/block_unauthorised', {
           method: 'GET',
     
         }).then(responce => {
@@ -40,7 +40,7 @@ const Panel = ({dat}) => {
     }
 
     const unblockAuth =()=>{
-        fetch('api/auth/unblock_unauthorised', {
+        fetch('https://traffic.pythonanywhere.com/api/auth/unblock_unauthorised', {
           method: 'GET',
     
         }).then(responce => {
@@ -56,7 +56,7 @@ const Panel = ({dat}) => {
         })
     }
 
-    console.log(dat)
+    
       
     return (
         <div className='container col-12'>

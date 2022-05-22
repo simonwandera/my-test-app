@@ -14,7 +14,7 @@ const Login = () => {
     }
 
     const onSubmit = (values) => {
-        fetch('api/auth/login', {
+        fetch('https://traffic.pythonanywhere.com/api/auth/login', {
             method: 'POST',
             body: JSON.stringify(values),
             headers: {
@@ -46,7 +46,7 @@ const Login = () => {
     }
 
     const getLatestProfile = ()=>{
-            fetch('api/auth/profile', {
+            fetch('https://traffic.pythonanywhere.com/api/auth/profile', {
               method: 'GET',
               body: JSON.stringify(),
               headers: {
