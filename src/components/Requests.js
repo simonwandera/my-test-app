@@ -23,7 +23,7 @@ const Requests = ({ dat }) => {
 
   const deleteAll = ()=>{
     
-      fetch('/api/auth/clear_requests', {
+      fetch('https://traffic.pythonanywhere.com/api/auth/clear_requests', {
         method: 'POST',
   
       }).then(responce => {
