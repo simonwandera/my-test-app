@@ -85,17 +85,17 @@ const Login = () => {
     
 
     return (
-        <div className='col-7'>
+        <div className='col-lg-7 col-sm-12'>
             <form onSubmit={formik.handleSubmit} encType='multipart/form-data'>
                 <div className='row'>
-                    <div className='m-2 p-2 col-3'>
+                    <div className='p-2 col-4'>
                         <input onChange={formik.handleChange} className="form-control" name='username' type="text" placeholder="Username" value={formik.values.userName} onBlur={formik.handleBlur} required />
                     </div>
-                    <div className='m-2 p-2 col-3'>
+                    <div className='p-2 col-4'>
                         <input onChange={formik.handleChange} className="form-control" name='password' type="password" placeholder="Password" value={formik.values.password} onBlur={formik.handleBlur} required />
                     </div>
 
-                    <div className='col-3 m-2 p-2'>
+                    <div className='col-3 p-2'>
                         <button type="submit" className='btn btn-info' name="submit">LogIn</button>
                     </div>
                 </div>

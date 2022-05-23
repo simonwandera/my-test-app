@@ -71,8 +71,15 @@
     background-color: rgba(22, 22, 22, 1);
     height: 100%;
     overflow: auto;
+    /* transform: translateX(-100%); */
+    transition: all 0.4s;
+    display: none; 
   }
-  
+
+  .sidebar-open{
+    transform: translateX(0%);
+    display: block;
+  }
   
   .sidebar-item{
     padding: .75em 1em;

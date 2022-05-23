@@ -1,8 +1,11 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
+import { clientContext } from './ClientContext';
 
-const Panel = ({dat}) => {
+
+const Panel = () => {
 
     const [speed, setSpeed] = useState()
+    const { clientData, setClientData} = useContext(clientContext)
 
     useEffect(() => {
         fetch('https://traffic.pythonanywhere.com/api/auth/speed', {
@@ -56,8 +59,22 @@ const Panel = ({dat}) => {
         })
     }
 
-    
-      
+    const blockMobile =()=>{
+      fetch('https://traffic.pythonanywhere.com/api/product/block_mobile', {
+        method: 'GET',
+  
+      }).then(responce => {
+        if (!responce.ok) {
+        }
+        return responce.json();
+      }).then(data => {
+          console.log(data)
+  
+      }).catch(error => {
+        console.log(error.responce, error.status, error.headers)
+      })
+  }
+
     return (
         <div className='container col-12'>
             <div className='row'>
@@ -66,7 +83,7 @@ const Panel = ({dat}) => {
                         <div class="card-body">Block mobile</div>
                         <div class="card-footer d-flex align-items-center justify-content-between">
                             <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                            <button className='btn btn-info'> Block</button>
+                            <button className='btn btn-info' onClick={() => blockMobile()}> Block</button>
                         </div>
                     </div>
                 </div>
@@ -76,7 +93,7 @@ const Panel = ({dat}) => {
                         <div class="card-body">Block Unathenticated</div>
                         <div class="card-footer d-flex align-items-center justify-content-between">
                             <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                            {dat.allow_auth==='deny' ? <button className='btn btn-primary' onClick={()=> unblockAuth()}> Unblock</button> : <button className='btn btn-primary' onClick={()=> blockAuth()}> Block</button> }
+                            {clientData.allow_auth==='deny' ? <button className='btn btn-primary' onClick={()=> unblockAuth()}> Unblock</button> : <button className='btn btn-primary' onClick={()=> blockAuth()}> Block</button> }
                         </div>
                     </div>
                 </div>

@@ -2,15 +2,18 @@ import React, { useContext, useState, useEffect } from 'react'
 import { userContext } from './userContext'
 import { isMobile } from 'react-device-detect';
 import MaterialTable from 'material-table';
+import { clientContext } from './ClientContext';
 
-const BlockedUser = ({ dat }) => {
+
+const BlockedUser = () => {
   const { userProfile, setUserProfile } = useContext(userContext)
-  dat.device = isMobile ? "Mobile" : "PC"
-  dat.user = userProfile.username
+  const { clientData, setClientData} = useContext(clientContext)
+  clientData.device = isMobile ? "Mobile" : "PC"
+  clientData.user = userProfile.username
   const [data, setData] = useState();
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null)
-  const [thisuser, setThisUser] = useState(dat);
+  const [thisuser, setThisUser] = useState(clientData);
 
   const columns = [
     { title: 'ID', field: 'id' },
@@ -53,6 +56,8 @@ const BlockedUser = ({ dat }) => {
     <div className='col-lg-12'>
       {error && <div> {error} </div>}
       {isPending && <div>Loading...</div>}
+
+      
 
       {data && <MaterialTable
         title='Blocked User'

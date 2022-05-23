@@ -2,12 +2,14 @@ import React, { useContext, useState, useEffect } from 'react'
 import { userContext } from './userContext'
 import { isMobile } from 'react-device-detect';
 import MaterialTable from 'material-table';
+import { clientContext } from './ClientContext';
 
-
-const Requests = ({ dat }) => {
+const Requests = () => {
   const { userProfile, setUserProfile } = useContext(userContext)
-  dat.device = isMobile ? "Mobile" : "PC"
-  dat.user = userProfile.username
+  const { clientData, setClientData} = useContext(clientContext)
+
+  clientData.device = isMobile ? "Mobile" : "PC"
+  clientData.user = userProfile.username
   const [data, setData] = useState();
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null)
@@ -78,7 +80,7 @@ const Requests = ({ dat }) => {
   }, [])
 
   return (
-      <div>
+      <div className='container-fluid col-sm-12 col-lg-12'>
         
         {error && <div> {error} </div>}
         {isPending && <div>Loading...</div>}
@@ -90,7 +92,7 @@ const Requests = ({ dat }) => {
         }
 
         {data && <MaterialTable
-          title='All Requests'
+          title='Requests'
           columns={columns}
           data={data}
 
@@ -158,7 +160,6 @@ const Requests = ({ dat }) => {
               },
             }
           ]}
-
         />}
       </div>
     

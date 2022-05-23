@@ -2,17 +2,20 @@ import React, { useContext, useState, useEffect } from 'react'
 import { userContext } from './userContext'
 import { isMobile } from 'react-device-detect';
 import MaterialTable from 'material-table';
+import { clientContext } from './ClientContext';
+import useFetch from './useFetch';
 
-const Blockedip = ({ dat }) => {
+
+const Blockedip = () => {
 
   const { userProfile, setUserProfile } = useContext(userContext)
-  dat.device = isMobile ? "Mobile" : "PC"
-  dat.user = userProfile.username
-  const [data, setData] = useState();
-  const [isPending, setIsPending] = useState(true);
-  const [error, setError] = useState(null)
-  const [thisuser, setThisUser] = useState(dat);
-
+  const { clientData, setClientData} = useContext(clientContext)
+  clientData.device = isMobile ? "Mobile" : "PC"
+  clientData.user = userProfile.username
+  // const [data, setData] = useState();
+  // const [isPending, setIsPending] = useState(true);
+  // const [error, setError] = useState(null)
+  const [thisuser, setThisUser] = useState(clientData);
 
   const columns = [
     { title: 'ID', field: 'id' },
@@ -20,45 +23,16 @@ const Blockedip = ({ dat }) => {
 
   ]
 
-  useEffect(() => {
-    const abortCont = new AbortController();
-    setTimeout(() => {
-      fetch('https://traffic.pythonanywhere.com/api/product/blocked_ip', {
-        method: 'POST',
-        body: JSON.stringify(thisuser),
-
-      }).then(responce => {
-        if (!responce.ok) {
-          throw Error('Could not fetch the data for the resourse');
-        } else {
-          console.log('You have data')
-        }
-        return responce.json();
-      }).then(data => {
-        setIsPending(false);
-        setError(null)
-        setData(data)
-
-      }).catch(error => {
-        if (error.name === 'AbortError') {
-          console.log('fetch aborted')
-        } else {
-          setIsPending(false)
-          setError(error.message);
-        }
-      })
-      return () => abortCont.abort();
-    }, 1);
-  }, [])
-
+  const {data, isPending, error, setData} = useFetch('/api/product/blocked_ip')
+  
   return (
-    <div className='main'>
+    <div className='container-fluid col-sm-12'>
 
       {error && <div> {error} </div>}
       {isPending && <div>Loading...</div>}
 
       {data && <MaterialTable
-        title='All requests'
+        title='Blocked IP'
         columns={columns}
         data={data}
 

@@ -3,14 +3,11 @@ import items from "./Sidebar.json"
 import './index.css'
 
 
-const Sidebar = () => {
+const Sidebar = ({sidebar}) => {
     return (
-      
 
-      <div className='sidebar'>
-
-        { items.map((item, index) => <SidebarItem key={index} {...item} item={item} />)}
-          
+      <div className={sidebar ? "sidebar sidebar-open" : "sidebar"}>
+        { items.map((item, index) => <SidebarItem key={index} {...item} item={item} />)}   
       </div>
       
     )
