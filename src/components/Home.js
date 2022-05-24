@@ -40,7 +40,6 @@ const Home = () => {
 
   }, [ip, country])
 
-  console.log(checkRequest && checkRequest)
 
   return (
     <div className='w-100'>

@@ -15,6 +15,7 @@ import { isMobile, isBrowser } from 'react-device-detect';
 import Panel from './components/Panel';
 import Unauthorised from './components/Unauthorised';
 import useFetch from './components/useFetch';
+import Users from './components/Users';
 
 function App() {
   const [userProfile, setUserProfile] = useState()
@@ -117,6 +118,7 @@ function App() {
                   <Route path="blocked_ip" element={< Blockedip />} />
                   <Route path="blocked_user" element={< BlockedUser />} />
                   <Route path="unauthorised" element={< Unauthorised />} />
+                  <Route path="users" element={< Users />} />
                   <Route path="" element={< Panel />} />
                   <Route path="panel" element={< Panel />} />
 

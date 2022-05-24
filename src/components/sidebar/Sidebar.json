@@ -11,7 +11,7 @@
             {
                 "title": "Users",
                 "icon": "bi-person-circle",
-                "path": "/users"
+                "path": "users"
             }
         ]
     },
