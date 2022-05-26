@@ -13,9 +13,10 @@ import BlockedUser from './components/BlockedUser';
 import UseBrowser from './components/UseBrowser';
 import { isMobile, isBrowser } from 'react-device-detect';
 import Panel from './components/Panel';
-import Unauthorised from './components/Unauthorised';
 import useFetch from './components/useFetch';
 import Users from './components/Users';
+import Unauthenticated from './components/Unauthenticated';
+import Abnormal from './components/Abnormal';
 
 function App() {
   const [userProfile, setUserProfile] = useState()
@@ -117,11 +118,11 @@ function App() {
                   <Route path="blocked_country" element={< BlockedCounties />} />
                   <Route path="blocked_ip" element={< Blockedip />} />
                   <Route path="blocked_user" element={< BlockedUser />} />
-                  <Route path="unauthorised" element={< Unauthorised />} />
+                  <Route path="abnormal" element={< Abnormal />} />
+                  <Route path="unauthenticated" element={< Unauthenticated />} />
                   <Route path="users" element={< Users />} />
                   <Route path="" element={< Panel />} />
                   <Route path="panel" element={< Panel />} />
-
                 </Route>
               </Route>
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useContext, useCallback, useState } from 'react'
+import React, { useEffect, useContext, useCallback, useState, useMemo } from 'react'
 import Header from './Header'
 import { userContext } from './userContext';
 import { Outlet } from 'react-router-dom';
@@ -14,8 +14,9 @@ const Home = () => {
   const [checkRequest, setCheckRequest] = useState()
   const [username, setUsername] = useState(userProfile ? userProfile.username : 'unauthorised')
 
-  useEffect(() => {
-      fetch('https://traffic.pythonanywhere.com/api/product/check_request', {
+  const check_request =()=>{
+    userProfile ? setUsername(userProfile.username) : setUsername('unauthenticated')
+    fetch('https://traffic.pythonanywhere.com/api/product/check_request', {
         method: 'POST',
         body: JSON.stringify({ device, ip, country, username }),
         headers: {
@@ -25,7 +26,7 @@ const Home = () => {
         if (!responce.ok) {
           console.log("Failed request")
         } else {
-          console.log('Logged')
+          console.log('Request checked')
         }
         return responce.json();
       }).then(data => {
@@ -36,10 +37,11 @@ const Home = () => {
       }).catch(error => {
         console.log(error.responce, error.status, error.headers)
       })
-    
+  }
 
-  }, [ip, country])
-
+  useEffect(() => {  
+    check_request()
+  }, [])
 
   return (
     <div className='w-100'>
@@ -49,7 +51,7 @@ const Home = () => {
         </div>
         {(checkRequest && (checkRequest.success || (userProfile && userProfile.userType === 'ADMIN'))) && 
          
-          <Outlet />
+          <Outlet context = {[check_request]}/>
         }
 
         {(!userProfile || (userProfile && userProfile.userType !== 'ADMIN')) &&

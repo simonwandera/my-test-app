@@ -2,13 +2,13 @@ import React, { useContext, useState, useEffect } from 'react'
 import { userContext } from './userContext'
 import MaterialTable from 'material-table';
 
-const Unauthorised = ({ dat }) => {
+const Unauthenticated = ({ dat }) => {
     const [data, setData] = useState()
     const [isPending, setIsPending] = useState(true);
     const [error, setError] = useState(null)
 
     useEffect(() => {
-        fetch('https://traffic.pythonanywhere.com/api/auth/unauthorised', {
+        fetch('https://traffic.pythonanywhere.com/api/auth/unauthenticated', {
             method: 'GET',
 
         }).then(responce => {
@@ -39,7 +39,7 @@ const Unauthorised = ({ dat }) => {
             {isPending && <div>Loading...</div>}
 
             {data && <MaterialTable
-                title='Unauthorised Requests'
+                title='Unauthenticated Requests'
                 columns={columns}
                 data={data}
 
@@ -62,4 +62,4 @@ const Unauthorised = ({ dat }) => {
     )
 }
 
-export default Unauthorised
+export default Unauthenticated

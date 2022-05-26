@@ -5,11 +5,14 @@ import { Link } from "react-router-dom";
 
 const Profile = () => {
   const { userProfile, setUserProfile } = useContext(userContext)
+
   const logout = () =>{
     console.log('logging out')
     setUserProfile(null)
     localStorage.clear()
   }
+
+ 
  
   return (
     <div className='shadow-lg m-2 py-2 border'>

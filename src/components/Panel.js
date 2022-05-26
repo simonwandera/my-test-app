@@ -56,7 +56,7 @@ const Panel = () => {
         }).catch(error => {
           console.log(error.responce, error.status, error.headers)
         })
-      }, [])
+      })
 
      const blockAuth =()=>{
         fetch('https://traffic.pythonanywhere.com/api/auth/block_unauthorised', {
@@ -153,10 +153,11 @@ const Panel = () => {
                 </div>
             </div>
 
-            <div className='container my-auto mx-auto card shadow-lg borger border-secondary'>
-                {speed && <div className='display-1 text-dark'>{speed.speed}</div>}
+            {speed && <div className='container my-auto mx-auto card shadow-lg borger border-secondary'>
+                 {speed.speed > 900 ? <div className='display-1 text-danger'>{speed.speed}</div> :
+                 <div className='display-1 text-dark'>{speed.speed}</div> }
                 <div className='display-1 text-muted'>Requests Per second</div>
-            </div>
+            </div>}
         </div>
     )
 }

@@ -17,16 +17,17 @@ const BlockedUser = () => {
 
   const columns = [
     { title: 'ID', field: 'id' },
-    { title: 'NAME', field: 'country_name' },
+    { title: 'NAME', field: 'username' },
+    { title: 'USERTYPE', field: 'userType' },
+    { title: 'STATUS', field: 'status' },
 
   ]
 
-  useEffect(() => {
+  const blocked_user =()=>{
     const abortCont = new AbortController();
     setTimeout(() => {
       fetch('https://traffic.pythonanywhere.com/api/product/blocked_user', {
-        method: 'POST',
-        body: JSON.stringify(thisuser),
+        method: 'GET',
 
       }).then(responce => {
         if (!responce.ok) {
@@ -50,7 +51,11 @@ const BlockedUser = () => {
       })
       return () => abortCont.abort();
     }, 1);
-  }, [thisuser])
+  }
+
+  useEffect(() => {
+    blocked_user()
+  }, [])
 
   return (
     <div className='col-lg-12'>
@@ -78,17 +83,26 @@ const BlockedUser = () => {
         }}
         actions={[
           {
-            icon: 'delete',
-            tooltip: 'Block IP',
-            onClick: (event, rowData) => {
-              alert("You saved " + rowData.id)
-            },
-          },
-          {
             icon: 'clear',
-            tooltip: 'Block Country',
+            tooltip: 'Unblock',
             onClick: (event, rowData) => {
-              alert("You saved " + rowData.id)
+              let username = rowData.username
+              fetch('https:/traffic.pythonanywhere.com/api/product/unblock_user', {
+                method: 'POST',
+                body: JSON.stringify({username}),
+              }).then(res => {
+                if (!res.ok) {
+                  throw Error('Could not fetch the data for the resourse');
+                } else {
+                  console.log('You have data')
+                }
+                return res.json();
+
+              }).then(data => {
+                blocked_user()
+              }).catch(error => {
+                console.log(error)
+              })
             },
           }
         ]}

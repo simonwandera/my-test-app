@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { BrowserView } from 'react-device-detect';
+import { BrowserView, MobileView } from 'react-device-detect';
 import { Link, Outlet } from 'react-router-dom';
 import Sidebar from './sidebar/Sidebar'
 
@@ -24,9 +24,9 @@ const Network = () => {
         <BrowserView>
           <Outlet />
         </BrowserView>
-        <BrowserView>
+        <MobileView>
           <div className='display-5'> Please use PC to view this content</div>
-        </BrowserView>
+        </MobileView>
       </div>
     </div>
   )

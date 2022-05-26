@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { userContext } from './userContext';
 import { clientContext } from './ClientContext';
+import { useOutletContext } from 'react-router-dom';
 
 const User = () => {
   
@@ -8,14 +9,17 @@ const User = () => {
   const { clientData, setClientData} = useContext(clientContext)
 
   const [data, setData] = useState();
-  const [username, setUsername] = useState(userProfile ? userProfile.username : 'Unauthorised')
+  const [username, setUsername] = useState(userProfile ? userProfile.username : 'unauthenticated')
   clientData.user = username
   const [thisuser, setThisuser] = useState(clientData)
   const [error, setError] = useState()
   const [isPending, setIsPending] = useState(false)
 
+  const [check_request] = useOutletContext()
+
   const request =(user)=>{
     const abortCont = new AbortController();
+    userProfile ? setUsername(userProfile.username) : setUsername('unauthenticated')
     setTimeout(() => {
       fetch('https://traffic.pythonanywhere.com/api/auth/add_request', {
         method: 'POST',
@@ -32,6 +36,7 @@ const User = () => {
         setIsPending(false);
         setError(null)
         setData(data)
+        check_request()
 
       }).catch(error => {
         if (error.name === 'AbortError') {
@@ -45,16 +50,13 @@ const User = () => {
     }, 1);
   }
 
-
   return (
 
     <div className='container-fluid'>
      
-
-     
         <div className='mt-4 m-auto col-lg-9'>
-          <div class="alert shadow alert-success" role="alert"> <p className='h3'>Welcome</p></div>
-          <div class="alert shadow alert-warning d-flex justify-content-around" role="alert">
+          <div className="alert shadow alert-success" role="alert"> <p className='h3'>Welcome</p></div>
+          <div className="alert shadow alert-warning d-flex justify-content-around" role="alert">
             <div>{clientData.country_name}</div>
             <div>{clientData.state}</div>
             <div className='text-primary'>Authorised</div>

@@ -25,8 +25,12 @@
             },
             
             {
-                "title": "Unauthorised",
-                "path": "unauthorised"
+                "title": "Unauthenticated",
+                "path": "unauthenticated"
+            },
+            {
+                "title": "Abnormal ",
+                "path": "abnormal"
             }
         ]
     },
