@@ -19,11 +19,29 @@ const Blockedip = () => {
 
   const columns = [
     { title: 'ID', field: 'id' },
-    { title: 'NAME', field: 'ip_address' },
+    { title: 'IP ADDRESS', field: 'ip_address' },
 
   ]
 
   const {data, isPending, error, setData} = useFetch('/api/product/blocked_ip')
+
+  const latestData =()=>{
+    fetch('https://traffic.pythonanywhere.com/api/product/blocked_ip', {
+      method: 'GET',
+
+    }).then(responce => {
+      if (!responce.ok) {
+        //pass
+      } else {
+        console.log('You have data')
+      }
+      return responce.json();
+    }).then(data => {
+      setData(data)
+    }).catch(error => {
+      console.log('Aborted')
+    })
+  }
   
   return (
     <div className='container-fluid col-sm-12'>
@@ -66,9 +84,8 @@ const Blockedip = () => {
                 }
                 return responce.json();
               }).then(data => {
-
-                alert("SUCCESS")
-
+                alert("Unblocked")
+                latestData()
               }).catch(error => {
                 console.log('Aborted')
               })

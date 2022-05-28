@@ -72,7 +72,8 @@ const Users = () => {
                 return responce.json();
               }).then(data => {
 
-                alert("SUCCESS")
+                alert("User Deleted")
+                latest_data()
 
               }).catch(error => {
                 console.log('Aborted')
@@ -97,7 +98,33 @@ const Users = () => {
                 }
                 return responce.json();
               }).then(data => {
+                alert('User Blocked')
+                latest_data()
 
+              }).catch(error => {
+                console.log('Aborted')
+              })
+            },
+          },
+          {
+            icon: 'edit',
+            tooltip: 'Make admin',
+            onClick: (event, rowData) => {
+              let username = rowData.username
+              fetch('https://traffic.pythonanywhere.com/api/product/make_admin', {
+                method: 'POST',
+                body: JSON.stringify({ username }),
+
+              }).then(responce => {
+                if (!responce.ok) {
+                  alert("ERROR")
+                } else {
+                  console.log("User Blocked")
+                }
+                return responce.json();
+              }).then(data => {
+
+                alert('user is now an admin')
                 latest_data()
 
               }).catch(error => {

@@ -15,7 +15,6 @@ import { isMobile, isBrowser } from 'react-device-detect';
 import Panel from './components/Panel';
 import useFetch from './components/useFetch';
 import Users from './components/Users';
-import Unauthenticated from './components/Unauthenticated';
 import Abnormal from './components/Abnormal';
 
 function App() {
@@ -119,13 +118,12 @@ function App() {
                   <Route path="blocked_ip" element={< Blockedip />} />
                   <Route path="blocked_user" element={< BlockedUser />} />
                   <Route path="abnormal" element={< Abnormal />} />
-                  <Route path="unauthenticated" element={< Unauthenticated />} />
                   <Route path="users" element={< Users />} />
                   <Route path="" element={< Panel />} />
                   <Route path="panel" element={< Panel />} />
                 </Route>
               </Route>
-
+              
             </Route>}
         </Routes>
         </clientContext.Provider>

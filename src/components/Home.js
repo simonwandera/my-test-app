@@ -31,6 +31,7 @@ const Home = () => {
         return responce.json();
       }).then(data => {
         if (data) {
+          console.log(data)
           setCheckRequest(data)
         }
 
@@ -57,22 +58,27 @@ const Home = () => {
         {(!userProfile || (userProfile && userProfile.userType !== 'ADMIN')) &&
           <div className=''>
             {!userProfile && clientData.allow_auth === 'deny' &&
-              <div className='col-8 m-2 p-2 m-auto'>
+              <div className='col-lg-8 col-sm-11 m-2 p-2 m-auto'>
                 <div class="alert shadow alert-danger mt-4" role="alert"> <p className='h5'>Request denied Please Log in to proceed</p></div>
               </div>}
 
             {checkRequest && checkRequest.device &&
-              <div className='col-8 m-2 p-2 m-auto'>
-                <div class="alert shadow alert-danger mt-4" role="alert"> <p className='h5'>Your device is blocked. Please switch to another device</p></div>
+              <div className='col-lg-8 col-sm-11 m-2 p-2 m-auto'>
+                <div class="alert shadow alert-danger mt-4" role="alert"> <p className='h5'>Mobile devices are currently blocked. Please use PC</p></div>
+              </div>}
+
+              {checkRequest && checkRequest.user &&
+              <div className='col-lg-8 col-sm-11 m-2 p-2 m-auto'>
+                <div class="alert shadow alert-danger mt-4" role="alert"> <p className='h5'>Your Account is blocked from this service.</p></div>
               </div>}
 
             {checkRequest && checkRequest.country &&
-              <div className='col-8 m-2 p-2 m-auto'>
+              <div className='col-lg-8 col-sm-11 m-2 p-2 m-auto'>
                 <div class="alert shadow alert-danger mt-4" role="alert"> <p className='h5'>Request denied because your country is blocked</p></div>
               </div>}
 
             {checkRequest && checkRequest.ip &&
-              <div className='col-8 m-2 p-2 m-auto'>
+              <div className='col-lg-8 col-sm-11 m-2 p-2 m-auto'>
                 <div class="alert shadow alert-danger mt-4" role="alert"> <p className='h5'>Request denied because your IP is blocked</p></div>
               </div>}
           </div>}

@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { useFormik } from 'formik'
 import { useContext } from 'react'
 import { userContext } from './userContext'
+import SignUp from './Signup'
 
 const Login = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const {userProfile, setUserProfile} = useContext(userContext)
+    const [showSign, setShowSign] = useState(false)
 
     const validate = values => {
         const errors = {}
@@ -85,18 +87,23 @@ const Login = () => {
     
 
     return (
-        <div className='col-lg-7 col-sm-12'>
+        <div className='col-lg-5 col-sm-12'>
+            { showSign === true  && <SignUp />}
             <form onSubmit={formik.handleSubmit} encType='multipart/form-data'>
-                <div className='row'>
-                    <div className='p-2 col-4'>
+                <div className='row g-2'>
+                    <div className='col-4 py-1'>
                         <input onChange={formik.handleChange} className="form-control" name='username' type="text" placeholder="Username" value={formik.values.userName} onBlur={formik.handleBlur} required />
                     </div>
-                    <div className='p-2 col-4'>
+                    <div className='col-4 py-1 '>
                         <input onChange={formik.handleChange} className="form-control" name='password' type="password" placeholder="Password" value={formik.values.password} onBlur={formik.handleBlur} required />
                     </div>
 
-                    <div className='col-3 p-2'>
-                        <button type="submit" className='btn btn-info' name="submit">LogIn</button>
+                    <div className='col-2 py-1'>
+                        <button type="submit" className='btn btn-info px-1' name="submit">LogIn</button>
+                    </div>
+
+                    <div className='col-2 py-1'>
+                        <button type="button" className='btn btn-primary px-1' name="open" onClick={() => setShowSign(!showSign)}>SignUp</button>
                     </div>
                 </div>
             </form>

@@ -144,7 +144,6 @@ const Abnormal = () => {
                 fetch('https://traffic.pythonanywhere.com/api/product/block_country', {
                   method: 'POST',
                   body: JSON.stringify(rowData.location),
-          
                 }).then(responce => {
                   if (!responce.ok) {
                     alert("ERROR")

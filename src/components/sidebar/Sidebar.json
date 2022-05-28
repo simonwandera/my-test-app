@@ -25,10 +25,6 @@
             },
             
             {
-                "title": "Unauthenticated",
-                "path": "unauthenticated"
-            },
-            {
                 "title": "Abnormal ",
                 "path": "abnormal"
             }

@@ -103,6 +103,7 @@ const Requests = () => {
             exportButton: true,
             pageSizeOptions: [5, 10, 20, { value: data.length, label: 'All' }],
             sorting: true,
+            selection: true,
             headerStyle: {
               backgroundColor: '#b58f1d',
               color: '#000',
@@ -113,10 +114,10 @@ const Requests = () => {
             {
               icon: 'delete',
               tooltip: 'Block IP',
-              onClick: (event, rowData) => {
+              onClick: (event, data) => {
                 fetch('https://traffic.pythonanywhere.com/api/product/block_ip', {
                   method: 'POST',
-                  body: JSON.stringify(rowData.ipv4),
+                  body: JSON.stringify({data}),
           
                 }).then(responce => {
                   if (!responce.ok) {
@@ -127,7 +128,7 @@ const Requests = () => {
                   return responce.json();
                 }).then(data => {
                   
-                  alert("SUCCESS")
+                  alert("successfully blocked")
           
                 }).catch(error => {
                   console.log('Aborted')
@@ -137,22 +138,21 @@ const Requests = () => {
             {
               icon: 'clear',
               tooltip: 'Block Country',
-              onClick: (event, rowData) => {
+              onClick: (event, data) => {
                 fetch('https://traffic.pythonanywhere.com/api/product/block_country', {
                   method: 'POST',
-                  body: JSON.stringify(rowData.location),
+                  body: JSON.stringify({data}),
           
                 }).then(responce => {
                   if (!responce.ok) {
-                    alert("ERROR")
-                    console.log(rowData.location)
+                    alert("Could not block")
                   } else {
                     console.log('You have data')
                   }
                   return responce.json();
                 }).then(data => {
                   
-                  alert("SUCCESS")
+                  alert("successfully blocked")
           
                 }).catch(error => {
                   console.log('Aborted')
