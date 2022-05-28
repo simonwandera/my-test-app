@@ -25,7 +25,7 @@ const Network = () => {
           <Outlet />
         </BrowserView>
         <MobileView>
-          <div class="alert shadow alert-dark mt-4" role="alert"> <p className='h5'>Please use PC to view this content</p></div>
+          <div class="alert shadow alert-primary mt-3" role="alert"> <p className='h5'>Please use PC to view this content</p></div>
         </MobileView>
       </div>
     </div>
