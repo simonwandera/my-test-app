@@ -71,9 +71,6 @@ const Login = () => {
               console.log(error.responce, error.status, error.headers)
             })
     }
-
-    
-
     const formik = useFormik({
         initialValues: {
             username: username,

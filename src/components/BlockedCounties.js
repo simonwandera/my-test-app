@@ -71,7 +71,7 @@ const BlockedCounties = () => {
                 icon: 'clear',
                 tooltip: 'Unblock Country',
                 onClick: (event, rowData) => {
-                  fetch('/api/product/unblock_country', {
+                  fetch('https://traffic.pythonanywhere.com/api/product/unblock_country', {
                     method: 'POST',
                     body: JSON.stringify(rowData.id),
             

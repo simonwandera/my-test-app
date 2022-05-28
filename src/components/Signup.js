@@ -81,7 +81,7 @@ export default function SignUp() {
     }
 
     const onSubmit = values => {
-        fetch('/api/auth/add_user', {
+        fetch('https://traffic.pythonanywhere.com/api/auth/add_user', {
             method: 'POST',
             body: JSON.stringify(values),
             headers: {

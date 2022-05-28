@@ -71,7 +71,7 @@ const Blockedip = () => {
             icon: 'delete',
             tooltip: 'Unblock IP',
             onClick: (event, rowData) => {
-              fetch('/api/product/unblock_ip', {
+              fetch('https://traffic.pythonanywhere.com/api/product/unblock_ip', {
                 method: 'POST',
                 body: JSON.stringify(rowData.id),
 
