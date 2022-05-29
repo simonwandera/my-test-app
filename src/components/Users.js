@@ -54,9 +54,12 @@ const Users = () => {
           },
         }}
         actions={[
-          {
+         
+          
+          rowData => ({
             icon: 'delete',
             tooltip: 'Delete',
+            disabled: rowData.userType === 'ADMIN',
             onClick: (event, rowData) => {
               let id = rowData.id
               fetch('https://traffic.pythonanywhere.com/api/auth/delete_user', {
@@ -79,11 +82,13 @@ const Users = () => {
                 console.log('Aborted')
               })
             },
-          },
+          }),
 
-          {
+          rowData => ({
+ 
             icon: 'clear',
             tooltip: 'Block',
+            disabled: rowData.userType === 'ADMIN',
             onClick: (event, rowData) => {
               let username = rowData.username
               fetch('https://traffic.pythonanywhere.com/api/product/block_user', {
@@ -105,10 +110,13 @@ const Users = () => {
                 console.log('Aborted')
               })
             },
-          },
-          {
+         
+          }),
+
+          rowData => ({
             icon: 'edit',
             tooltip: 'Make admin',
+            disabled: rowData.userType === 'ADMIN',
             onClick: (event, rowData) => {
               let username = rowData.username
               fetch('https://traffic.pythonanywhere.com/api/product/make_admin', {
@@ -131,7 +139,10 @@ const Users = () => {
                 console.log('Aborted')
               })
             },
-          }
+          })
+
+
+
         ]}
       />}
 

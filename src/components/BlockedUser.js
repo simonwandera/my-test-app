@@ -87,7 +87,7 @@ const BlockedUser = () => {
             tooltip: 'Unblock',
             onClick: (event, rowData) => {
               let username = rowData.username
-              fetch('https:/traffic.pythonanywhere.com/api/product/unblock_user', {
+              fetch('https://traffic.pythonanywhere.com/api/product/unblock_user', {
                 method: 'POST',
                 body: JSON.stringify({username}),
               }).then(res => {
