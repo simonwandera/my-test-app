@@ -28,7 +28,7 @@ const Abnormal = () => {
     
       fetch('https://traffic.pythonanywhere.com/api/auth/clear_requests', {
         method: 'POST',
-  
+        getreq
       }).then(responce => {
         if (!responce.ok) {
         } else {
@@ -71,13 +71,14 @@ const Abnormal = () => {
         }
       })
       return () => abortCont.abort();
-    }, 1);
+    }, 1000);
 
   }
 
-  useEffect(() => {
-   getreq()
-  })
+ const faa = getreq();
+
+  setInterval(() => {getreq()}, 10000000);
+
 
   return (
       <div className='container-fluid col-sm-12 col-lg-12'>
@@ -116,10 +117,10 @@ const Abnormal = () => {
             {
               icon: 'delete',
               tooltip: 'Block IP',
-              onClick: (event, rowData) => {
-                fetch('https://traffic.pythonanywhere.com/api/product/block_ip', {
+              onClick: (event, data) => {
+                fetch('https://traffic.pythonanywhere.com/api/product/block_my_ip', {
                   method: 'POST',
-                  body: JSON.stringify(rowData.ipv4),
+                  body: JSON.stringify({data}),
           
                 }).then(responce => {
                   if (!responce.ok) {
@@ -130,7 +131,7 @@ const Abnormal = () => {
                   return responce.json();
                 }).then(data => {
                   
-                  alert("SUCCESS")
+                  alert("successfully blocked")
           
                 }).catch(error => {
                   console.log('Aborted')
@@ -140,22 +141,20 @@ const Abnormal = () => {
             {
               icon: 'clear',
               tooltip: 'Block Country',
-              onClick: (event, rowData) => {
-                fetch('https://traffic.pythonanywhere.com/api/product/block_country', {
+              onClick: (event, data) => {
+                fetch('https://traffic.pythonanywhere.com/api/product/block_my_country', {
                   method: 'POST',
-                  body: JSON.stringify(rowData.location),
+                  body: JSON.stringify({data}),
+          
                 }).then(responce => {
                   if (!responce.ok) {
-                    alert("ERROR")
-                    console.log(rowData.location)
+                    alert("Could not block")
                   } else {
                     console.log('You have data')
                   }
                   return responce.json();
                 }).then(data => {
-                  
-                  alert("SUCCESS")
-          
+                  alert("successfully blocked")
                 }).catch(error => {
                   console.log('Aborted')
                 })

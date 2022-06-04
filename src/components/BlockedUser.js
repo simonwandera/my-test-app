@@ -16,7 +16,7 @@ const BlockedUser = () => {
   const [thisuser, setThisUser] = useState(clientData);
 
   const columns = [
-    { title: 'ID', field: 'id' },
+    // { title: 'ID', field: 'id' },
     { title: 'NAME', field: 'username' },
     { title: 'USERTYPE', field: 'userType' },
     { title: 'STATUS', field: 'status' },

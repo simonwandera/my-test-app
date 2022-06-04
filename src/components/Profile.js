@@ -12,8 +12,6 @@ const Profile = () => {
     localStorage.clear()
   }
 
- 
- 
   return (
     <div className='shadow-lg m-2 py-2 border'>
       <div className='text-white d-inline p-2 '>

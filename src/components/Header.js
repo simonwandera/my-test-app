@@ -8,7 +8,6 @@ const Header = () => {
 
     const {userProfile, setUserProfile} = useContext(userContext)
 
-
     return (
         <div className='m-0 p-0 col-sm-12 w-100'>
             <div className='bg-secondary d-flex justify-content-end'>

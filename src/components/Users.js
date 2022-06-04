@@ -5,9 +5,9 @@ import useFetch from './useFetch';
 const Users = () => {
 
   const columns = [
-    { title: 'Username', field: 'username' },
-    { title: 'Usertype', field: 'userType' },
-    { title: 'Status', field: 'status' },
+    { title: 'NAME', field: 'username' },
+    { title: 'USERTYPE', field: 'userType' },
+    { title: 'STATUS', field: 'status' },
   ]
 
   const { data, isPending, error, setData } = useFetch("/api/auth/show_users")

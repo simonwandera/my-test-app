@@ -19,8 +19,8 @@ const BlockedCounties = () => {
 
 
     const columns = [
-      { title: 'ID', field: 'id' },
-      { title: 'NAME', field: 'country_name' },
+      // { title: 'ID', field: 'id' },
+      { title: 'COUNTRY_NAME', field: 'country_name' },
     ]
 
     const getCountry = ()=>{

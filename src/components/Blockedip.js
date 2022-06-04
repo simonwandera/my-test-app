@@ -18,7 +18,7 @@ const Blockedip = () => {
   const [thisuser, setThisUser] = useState(clientData);
 
   const columns = [
-    { title: 'ID', field: 'id' },
+    // { title: 'ID', field: 'id' },
     { title: 'IP ADDRESS', field: 'ip_address' },
 
   ]
